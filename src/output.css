@@ -1,4 +1,5 @@
 /*! tailwindcss v4.3.2 | MIT License | https://tailwindcss.com */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap');
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -9,6 +10,9 @@
     --color-red-500: oklch(63.7% 0.237 25.331);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
+    --color-gray-custom: #9CA3AF;
+    --font-inter: "Inter", sans-serif;
+    --font-sora: "Sora", sans-serif;
   }
 }
 @layer base {
@@ -160,6 +164,15 @@
   }
 }
 @layer utilities {
+  .font-inter {
+    font-family: var(--font-inter);
+  }
+  .font-sora {
+    font-family: var(--font-sora);
+  }
+  .text-gray-custom {
+    color: var(--color-gray-custom);
+  }
   .text-red-500 {
     color: var(--color-red-500);
   }
