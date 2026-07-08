@@ -69,58 +69,75 @@
 <body class="bg-white dark:bg-dark-bg text-gray-900 dark:text-white transition-colors duration-300">
 
 <!-- ================= HEADER ================= -->
-<header class="sticky top-4 z-50 mx-4 md:mx-8 lg:mx-[70px]">
-  <div class="rounded-[20px] px-4 md:px-8 py-4 flex items-center justify-between
-              bg-white/70 dark:bg-gradient-to-b dark:from-black/40 dark:via-[#484848]/25 dark:to-black/40
-              backdrop-blur-xl border border-gray-200/70 dark:border-white/10 shadow-sm">
-
+<header class="sticky top-0 z-50 ">
+  <nav class="mx-auto  w-[95%] rounded-2xl bg-gray-100 dark:bg-transparent px-6 py-3 flex items-center justify-between shadow-sm border-b border-gray-200/60 dark:border-gray-800">
     <!-- Logo -->
-    <a href="#" class="flex flex-col items-start shrink-0">
-      <span class="font-sora font-bold text-xl md:text-2xl tracking-tight">
-        <span class="text-primary">AUTO</span><span class="text-gray-900 dark:text-white">STAD</span>
-      </span>
-      <span class="hidden sm:flex gap-1 text-[8px] tracking-[2.5px] font-medium text-gray-500 dark:text-gray-300 mt-0.5">
-        <span>DRIVE</span><span>YOUR</span><span>LEGEND</span>
-      </span>
-    </a>
+ <a href="/" class="flex flex-col items-start shrink-0" aria-label="AutoSTAD home">
+  <img src="../images/members/lightmode.png" alt="AutoSTAD" class="h-10 w-auto dark:hidden" />
+  <img src="../images/members/darkmode.png" alt="AutoSTAD" class="h-10 w-auto hidden dark:block" />
+  <p class="hidden sm:block text-[9px] tracking-[0.2em] text-gray-500 dark:text-gray-400 font-medium">DRIVE YOUR LEGEND</p>
+</a>
 
-    <!-- Nav links -->
-    <nav class="hidden lg:flex items-center gap-8 text-sm">
-      <a href="#" class="text-primary font-medium">Home</a>
-      <a href="#" class="hover:text-primary transition-colors">Cars</a>
-      <a href="#why" class="hover:text-primary transition-colors">About</a>
-      <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
-      <a href="#" class="hover:text-primary transition-colors">Login &amp; Register</a>
-    </nav>
+    <!-- Desktop links -->
+    <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600 dark:text-gray-300">
+      <li><a href="/" class="hover:text-primary transition-colors">Home</a></li>
+      <li class="relative">
+        <a href="/cars" class="underline-active relative text-primary font-semibold">Cars</a>
+      </li>
+      <li><a href="/about" class="hover:text-primary transition-colors">About</a></li>
+      <li><a href="/contact" class="hover:text-primary transition-colors">Contact</a></li>
+      <li>
+        <!-- Dropdown example: Login & Register -->
+        <div class="relative group">
+          <button class="flex items-center gap-1 hover:text-primary transition-colors" aria-haspopup="true" aria-expanded="false">
+            Login &amp; Register
+            <svg class="w-3.5 h-3.5 mt-0.5 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute top-full left-1/2 -translate-x-1/2 mt-3 w-40 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 py-2 z-50">
+            <a href="login.html" class="block px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg mx-1">Sign In</a>
+            <a href="register.html" class="block px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg mx-1">Register</a>
+          </div>
+        </div>
+      </li>
+    </ul>
 
-    <!-- Right actions -->
-    <div class="flex items-center gap-4 md:gap-5">
-      <button aria-label="Search" class="hover:text-primary transition-colors">
-        <i class="fa-solid fa-magnifying-glass text-lg"></i>
+    <!-- Right icons -->
+    <div class="flex items-center gap-3">
+      <button class="hidden sm:flex w-9 h-9 items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 transition-colors" aria-label="Search">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"/></svg>
       </button>
-      <button aria-label="Account" class="hidden sm:inline-flex hover:text-primary transition-colors">
-        <i class="fa-regular fa-user text-xl"></i>
+
+      <!-- Dark mode toggle -->
+      <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 transition-colors" aria-label="Toggle dark mode">
+        <svg id="theme-icon-moon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg id="theme-icon-sun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
       </button>
-      <a href="#" class="hidden sm:inline-flex items-center gap-2 bg-primary text-white text-sm font-medium px-5 py-2.5 rounded-[10px] hover:bg-red-600 transition-colors">
-        Sign In <i class="fa-solid fa-arrow-right text-xs"></i>
+
+      <button class="hidden sm:flex w-9 h-9 items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 transition-colors" aria-label="Account">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+      </button>
+
+      <a href="login.html" class="flex items-center gap-1.5 bg-button hover:bg-button-hover text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
+        Sign In
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
       </a>
-      <button id="theme-toggle" aria-label="Toggle theme" class="hover:text-primary transition-colors">
-        <i id="theme-icon" class="fa-solid fa-sun text-xl"></i>
-      </button>
-      <button id="menu-toggle" aria-label="Open menu" class="lg:hidden hover:text-primary transition-colors">
-        <i class="fa-solid fa-bars text-xl"></i>
+
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200" aria-label="Open menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
-  </div>
+  </nav>
 
-  <!-- Mobile nav -->
-  <div id="mobile-menu" class="hidden lg:hidden mt-2 rounded-[16px] bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 p-5 flex flex-col gap-4 text-sm shadow-lg">
-    <a href="#" class="text-primary font-medium">Home</a>
-    <a href="#" class="hover:text-primary transition-colors">Cars</a>
-    <a href="#why" class="hover:text-primary transition-colors">About</a>
-    <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
-    <a href="#" class="hover:text-primary transition-colors">Login &amp; Register</a>
-    <a href="#" class="inline-flex items-center justify-center gap-2 bg-primary text-white font-medium px-5 py-2.5 rounded-[10px]">Sign In <i class="fa-solid fa-arrow-right text-xs"></i></a>
+  <!-- Mobile dropdown menu -->
+  <div id="mobile-menu" class="hidden md:hidden max-w-7xl mx-auto mt-2 bg-gray-100 dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-200/60 dark:border-gray-800 p-4">
+    <ul class="flex flex-col gap-1 text-sm font-medium text-gray-700 dark:text-gray-200">
+      <li><a href="/" class="block px-3 py-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800">Home</a></li>
+      <li><a href="/cars" class="block px-3 py-2.5 rounded-lg text-primary font-semibold bg-icon-bg dark:bg-gray-800">Cars</a></li>
+      <li><a href="/about" class="block px-3 py-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800">About</a></li>
+      <li><a href="/contact" class="block px-3 py-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800">Contact</a></li>
+      <li><a href="login.html" class="block px-3 py-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800">Login &amp; Register</a></li>
+    </ul>
   </div>
 </header>
 
@@ -154,6 +171,35 @@
       </div>
       <img src="https://www.figma.com/api/mcp/asset/c48bd27d-3ca1-463a-89d1-fdf3efac0c2b"
            alt="Hyper-car showcase" class="relative w-full h-auto object-contain drop-shadow-2xl" />
+    </div>
+  </div>
+</section>
+
+<!-- ================= Trust Authority Metrics ================= -->
+<section class="px-6 md:px-[70px] py-16">
+  <div class="max-w-7xl mx-auto flex flex-col items-center gap-14">
+    <h2 class="font-display font-bold text-3xl md:text-5xl text-center">Trust &amp; Authority Metrics</h2>
+
+    <div class="w-full rounded-[28px] border border-gray-200 dark:border-none bg-white dark:bg-black/20 flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-4 px-8 py-12">
+      <div class="flex flex-col items-center text-center gap-3 max-w-[413px]">
+        <i class="fa-solid fa-car text-primary text-6xl"></i>
+        <p class="font-display font-semibold text-2xl">150+ Hyper Cars</p>
+        <p class="text-gray-600 dark:text-gray-200 text-lg md:text-xl">From classic icons to modern track legends, curated with precision.</p>
+      </div>
+      <div class="hidden lg:block w-px h-32 bg-gray-200 dark:bg-white/10"></div>
+      <div class="flex flex-col items-center text-center gap-3 max-w-[413px]">
+        <div class="flex gap-1 text-primary text-3xl">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="font-display font-semibold text-2xl">99% Customer Satisfaction</p>
+        <p class="text-gray-600 dark:text-gray-200 text-lg md:text-xl">A stellar reputation built on transparency, quality, and service excellence.</p>
+      </div>
+      <div class="hidden lg:block w-px h-32 bg-gray-200 dark:bg-white/10"></div>
+      <div class="flex flex-col items-center text-center gap-3 max-w-[413px]">
+        <i class="fa-solid fa-headset text-primary text-6xl"></i>
+        <p class="font-display font-semibold text-2xl">24/7 Premium Support</p>
+        <p class="text-gray-600 dark:text-gray-200 text-lg md:text-xl">A dedicated concierge service and personalized expert assistance, always on call.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -427,7 +473,7 @@
   </div>
 </footer>
 
-<script>
+<!-- <script>
   // ---- Theme toggle (dark default, persisted) ----
   const root = document.documentElement;
   const themeIcon = document.getElementById('theme-icon');
@@ -453,6 +499,48 @@
   const mobileMenu = document.getElementById('mobile-menu');
   menuToggle.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
+  });
+</script> -->
+
+<script>
+  // ---- Theme toggle (Fixed IDs for SVGs) ----
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('theme-toggle');
+  const moonIcon = document.getElementById('theme-icon-moon');
+  const sunIcon = document.getElementById('theme-icon-sun');
+
+  function applyTheme(isDark) {
+    if (isDark) {
+      root.classList.add('dark');
+      moonIcon.classList.add('hidden');
+      sunIcon.classList.remove('hidden');
+    } else {
+      root.classList.remove('dark');
+      moonIcon.classList.remove('hidden');
+      sunIcon.classList.add('hidden');
+    }
+    localStorage.setItem('autostad-theme', isDark ? 'dark' : 'light');
+  }
+
+  // Determine initial state
+  const saved = localStorage.getItem('autostad-theme');
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(saved ? saved === 'dark' : prefersDark);
+
+  themeToggle.addEventListener('click', () => {
+    applyTheme(!root.classList.contains('dark'));
+  });
+
+  // ---- Mobile dropdown menu (Fixed Button ID) ----
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    
+    // Accessibility helper
+    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+    mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
   });
 </script>
 
