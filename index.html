@@ -1,13 +1,460 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" > 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home Page</title>
     <link rel="stylesheet" href="./src/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          brand: {
+            red: '#FB2C36',
+            redAlt: '#FB2C35',
+          },
+          ink: '#121212',
+          mist: '#E5E7EB',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          display: ['Sora', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; }
+  .font-display { font-family: 'Sora', sans-serif; }
+
+  /* ---- Marquee for trusted brands make it loop foerver hehe ---- */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-ltr 22s linear infinite;
+  }
+  @keyframes marquee-ltr {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0%); }
+  }
+  .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+
+  /* ---- Testimonial hover shadow ---- */
+  .testimonial-card {
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  }
+  .testimonial-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px -20px rgba(251, 44, 54, 0.35), 0 15px 25px -10px rgba(0,0,0,0.35);
+    border-color: rgba(251, 44, 54, 0.55);
+  }
+
+  /* Focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid #FB2C36;
+    outline-offset: 2px;
+  }
+
+</style>
 </head>
-<body class="text-gray-custom font-sora">
-   
-</body>
+
+<body class="bg-white dark:bg-dark-bg text-gray-900 dark:text-white transition-colors duration-300">
+
+<!-- ================= HEADER ================= -->
+<header class="sticky top-4 z-50 mx-4 md:mx-8 lg:mx-[70px]">
+  <div class="rounded-[20px] px-4 md:px-8 py-4 flex items-center justify-between
+              bg-white/70 dark:bg-gradient-to-b dark:from-black/40 dark:via-[#484848]/25 dark:to-black/40
+              backdrop-blur-xl border border-gray-200/70 dark:border-white/10 shadow-sm">
+
+    <!-- Logo -->
+    <a href="#" class="flex flex-col items-start shrink-0">
+      <span class="font-sora font-bold text-xl md:text-2xl tracking-tight">
+        <span class="text-primary">AUTO</span><span class="text-gray-900 dark:text-white">STAD</span>
+      </span>
+      <span class="hidden sm:flex gap-1 text-[8px] tracking-[2.5px] font-medium text-gray-500 dark:text-gray-300 mt-0.5">
+        <span>DRIVE</span><span>YOUR</span><span>LEGEND</span>
+      </span>
+    </a>
+
+    <!-- Nav links -->
+    <nav class="hidden lg:flex items-center gap-8 text-sm">
+      <a href="#" class="text-primary font-medium">Home</a>
+      <a href="#" class="hover:text-primary transition-colors">Cars</a>
+      <a href="#why" class="hover:text-primary transition-colors">About</a>
+      <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+      <a href="#" class="hover:text-primary transition-colors">Login &amp; Register</a>
+    </nav>
+
+    <!-- Right actions -->
+    <div class="flex items-center gap-4 md:gap-5">
+      <button aria-label="Search" class="hover:text-primary transition-colors">
+        <i class="fa-solid fa-magnifying-glass text-lg"></i>
+      </button>
+      <button aria-label="Account" class="hidden sm:inline-flex hover:text-primary transition-colors">
+        <i class="fa-regular fa-user text-xl"></i>
+      </button>
+      <a href="#" class="hidden sm:inline-flex items-center gap-2 bg-primary text-white text-sm font-medium px-5 py-2.5 rounded-[10px] hover:bg-red-600 transition-colors">
+        Sign In <i class="fa-solid fa-arrow-right text-xs"></i>
+      </a>
+      <button id="theme-toggle" aria-label="Toggle theme" class="hover:text-primary transition-colors">
+        <i id="theme-icon" class="fa-solid fa-sun text-xl"></i>
+      </button>
+      <button id="menu-toggle" aria-label="Open menu" class="lg:hidden hover:text-primary transition-colors">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile nav -->
+  <div id="mobile-menu" class="hidden lg:hidden mt-2 rounded-[16px] bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 p-5 flex flex-col gap-4 text-sm shadow-lg">
+    <a href="#" class="text-primary font-medium">Home</a>
+    <a href="#" class="hover:text-primary transition-colors">Cars</a>
+    <a href="#why" class="hover:text-primary transition-colors">About</a>
+    <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+    <a href="#" class="hover:text-primary transition-colors">Login &amp; Register</a>
+    <a href="#" class="inline-flex items-center justify-center gap-2 bg-primary text-white font-medium px-5 py-2.5 rounded-[10px]">Sign In <i class="fa-solid fa-arrow-right text-xs"></i></a>
+  </div>
+</header>
+
+<!-- ================= HERO Section ================= -->
+<section class="relative overflow-hidden px-6 md:px-[70px] pt-16 md:pt-24 pb-16">
+  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+    <div class="flex flex-col items-start gap-4 max-w-xl">
+      <p class="text-lg md:text-xl">PRECISION ENGINEERING.</p>
+      <h1 class="font-bold text-[42px] leading-[1.1] sm:text-[56px] md:text-[68px] lg:text-[80px]">
+        DRIVEN BY<br class="hidden sm:block"> PERFECTION.
+      </h1>
+      <p class="text-base text-gray-600 dark:text-gray-200 max-w-md">
+        A handpicked collection of elite hyper-cars designed for those who demand the extraordinary.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 mt-2 w-full sm:w-auto">
+        <a href="#" class="inline-flex items-center justify-center bg-primary text-white font-semibold text-lg px-10 py-4 rounded-[10px] bg-button hover:bg-button-hover transition-colors">
+          EXPLORE COLLECTION
+        </a> 
+        
+        <a href="#" class="inline-flex items-center justify-center gap-4 border border-button text-primary font-semibold text-lg px-8 py-4 rounded-[10px] hover:bg-button-hover hover:text-white transition-colors">
+            Experience Live
+            <i class="fa-regular fa-circle-play text-" ></i>
+          
+          </a>
+      </div>
+    </div>
+
+    <div class="relative w-full max-w-[660px] shrink-0">
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="hero-glow w-[85%] aspect-square rounded-full bg-primary-bg/35 dark:bg-dark-bg/30 blur-3xl"></div>
+      </div>
+      <img src="https://www.figma.com/api/mcp/asset/c48bd27d-3ca1-463a-89d1-fdf3efac0c2b"
+           alt="Hyper-car showcase" class="relative w-full h-auto object-contain drop-shadow-2xl" />
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY CHOOSE US ================= -->
+<section id="why" class="px-6 md:px-[70px] py-20">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="font-sora font-bold text-3xl md:text-5xl text-center mb-16">Why Choose Us</h2>
+
+    <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-4">
+      <!-- Left reasons -->
+      <div class="flex flex-col gap-10 w-full lg:w-1/3">
+        <div class="flex items-center gap-4">
+          <div class="shrink-0 size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary text-3xl">
+            <i class="fa-solid fa-user-check"></i>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <h3 class="font-semibold text-xl md:text-2xl">Certified Inspection</h3>
+            <p class="text-gray-600 dark:text-gray-200 text-base md:text-lg">Rigorous multi-point testing by expert technicians ensures peak road readiness.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="shrink-0 size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary text-3xl">
+            <i class="fa-solid fa-car"></i>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <h3 class="font-semibold text-xl md:text-2xl">Premium Inventory</h3>
+            <p class="text-gray-600 dark:text-gray-200 text-base md:text-lg">A curated selection of elite vehicles, from modern daily drivers to supercars.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center image -->
+      <div class="w-full lg:w-[260px] shrink-0 order-first lg:order-none">
+        <img src="https://www.figma.com/api/mcp/asset/8dff22a0-d0b1-4050-8e90-5def432dcb33"
+             alt="Featured car" class="w-full h-auto max-h-full object-cover rounded-2xl mx-auto" />
+      </div>
+
+      <!-- Right reasons -->
+      <div class="flex flex-col gap-10 w-full lg:w-1/3">
+        <div class="flex items-center gap-4">
+          <div class="shrink-0 size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary text-3xl">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <h3 class="font-semibold text-xl md:text-2xl">Extended Warranty</h3>
+            <p class="text-gray-600 dark:text-gray-200 text-base md:text-lg">Drive with absolute peace of mind backed by comprehensive coverage protection.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="shrink-0 size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary text-3xl">
+            <i class="fa-solid fa-truck"></i>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <h3 class="font-semibold text-xl md:text-2xl">Doorstep Delivery</h3>
+            <p class="text-gray-600 dark:text-gray-200 text-base md:text-lg">Complete your purchase online and have your vehicle delivered straight to your home.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUSTED BRANDS (auto-slide) ================= -->
+<section class="py-16 overflow-hidden">
+  <h2 class="font-sora font-bold text-3xl md:text-5xl text-center mb-14 px-6">Trusted Brands We Offer</h2>
+
+  <div class="marquee-wrap relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-y-0 left-0 w-24 md:w-40 bg-gradient-to-r from-white dark:from-gray-900 to-transparent z-10"></div>
+    <div class="pointer-events-none absolute inset-y-0 right-0 w-24 md:w-40 bg-gradient-to-l from-white dark:from-gray-950 to-transparent z-10"></div>
+
+    <div class="marquee-track gap-10 md:gap-16 py-2">
+      <!-- set A -->
+      <div class="flex gap-10 md:gap-16 shrink-0">
+        <img class="size-24 md:size-[135px] rounded-full object-cover shadow-md" src="./images/cars/carLogo/horse.jpg" alt="ferrari">
+        <img class="size-24 md:size-[135px] rounded-full object-cover shadow-md" src="./images/cars/carLogo/ford.jpg" alt="ford">
+        <img class="size-24 md:size-[135px] rounded-full object-cover shadow-md" src="./images/cars/carLogo/lambo.jpg" alt="lambo">
+        <img class="size-24 md:size-[135px] rounded-full object-cover shadow-md" src="./images/cars/carLogo/mclaren.jpg" alt="mclaren">
+        <img class="size-24 md:size-[135px] rounded-full object-cover shadow-md" src="./images/cars/carLogo/odi.jpg" alt="odi">
+        <img class="size-24 md:size-[135px] rounded-full object-cover shadow-md" src="./images/cars/carLogo/range rover.jpg" alt="RR">
+      </div>
+      <!-- set B (duplicate for seamless loop) -->
+      <div class="flex gap-10 md:gap-16 shrink-0" aria-hidden="true">
+        <img class="size-24 md:size-[135px] rounded-full object-cover shadow-md" src="./images/cars/carLogo/horse.jpg" alt="ferrari">
+        <img class="size-24 md:size-[135px] rounded-full object-cover shadow-md" src="./images/cars/carLogo/ford.jpg" alt="ford">
+        <img class="size-24 md:size-[135px] rounded-full object-cover shadow-md" src="./images/cars/carLogo/lambo.jpg" alt="lambo">
+        <img class="size-24 md:size-[135px] rounded-full object-cover shadow-md" src="./images/cars/carLogo/mclaren.jpg" alt="mclaren">
+        <img class="size-24 md:size-[135px] rounded-full object-cover shadow-md" src="./images/cars/carLogo/odi.jpg" alt="odi">
+        <img class="size-24 md:size-[135px] rounded-full object-cover shadow-md" src="./images/cars/carLogo/range rover.jpg" alt="RR">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="px-6 md:px-[70px] py-20">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="font-sora font-bold text-3xl md:text-5xl text-center mb-16">What Our Customers Say</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      
+      <div class="testimonial-card flex flex-col items-center text-center gap-4 p-8 rounded-[28px] border border-[#595959]/30
+                  bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50
+                  dark:from-black/40 dark:via-[#484848]/25 dark:to-black/40">
+        <img src="https://www.figma.com/api/mcp/asset/b98af70a-eee4-4331-a502-5896ed5a15d7" alt="Pen Panhaleap" class="size-[100px] rounded-full object-cover">
+        <div class="flex gap-1 text-primary">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <p class="text-sm md:text-base">Blazing fast load times and incredibly smooth transitions. The performance optimization on Autostad is top-tier.</p>
+        <p class="font-display font-semibold text-lg">Pen Panhaleap</p>
+        <p class="text-sm text-gray-500 dark:text-gray-300">01/07/2026</p>
+      </div>
+
+      <div class="testimonial-card flex flex-col items-center text-center gap-4 p-8 rounded-[28px] border border-[#595959]/30
+                  bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50
+                  dark:from-black/40 dark:via-[#484848]/25 dark:to-black/40">
+        <img src="https://www.figma.com/api/mcp/asset/f5176f54-8f42-4851-bff3-c537e74d23ad" alt="Ratana Oudom" class="size-[100px] rounded-full object-cover">
+        <div class="flex gap-1 text-primary">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <p class="text-sm md:text-base">I didn't have to guess where anything was—everything just flows perfectly from one section to the next.</p>
+        <p class="font-display font-semibold text-lg">Ratana Oudom</p>
+        <p class="text-sm text-gray-500 dark:text-gray-300">01/07/2026</p>
+      </div>
+
+      <div class="testimonial-card flex flex-col items-center text-center gap-4 p-8 rounded-[28px] border border-[#595959]/30
+                  bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50
+                  dark:from-black/40 dark:via-[#484848]/25 dark:to-black/40">
+        <img src="https://www.figma.com/api/mcp/asset/fc1cd1f0-42a0-4e53-b02c-26f6b606d66b" alt="Cheak ChhingLyheng" class="size-[100px] rounded-full object-cover">
+        <div class="flex gap-1 text-primary">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <p class="text-sm md:text-base">The certified inspection gave me total confidence, and home delivery was flawless!</p>
+        <p class="font-display font-semibold text-lg">Cheak ChhingLyheng</p>
+        <p class="text-sm text-gray-500 dark:text-gray-300">01/07/2026</p>
+      </div>
+
+      <div class="testimonial-card flex flex-col items-center text-center gap-4 p-8 rounded-[28px] border border-[#595959]/30
+                  bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50
+                  dark:from-black/40 dark:via-[#484848]/25 dark:to-black/40">
+        <img src="https://www.figma.com/api/mcp/asset/fe1f8f4b-a303-4d59-a883-97b76623e32a" alt="Kao Sengheang" class="size-[100px] rounded-full object-cover">
+        <div class="flex gap-1 text-primary">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <p class="text-sm md:text-base">Autostad has nailed the balance between high-end visuals and practical functionality. It’s become a daily inspiration for me.</p>
+        <p class="font-display font-semibold text-lg">Kao Sengheang</p>
+        <p class="text-sm text-gray-500 dark:text-gray-300">01/07/2026</p>
+      </div>
+
+      <div class="testimonial-card flex flex-col items-center text-center gap-4 p-8 rounded-[28px] border border-[#595959]/30
+                  bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50
+                  dark:from-black/40 dark:via-[#484848]/25 dark:to-black/40">
+        <img src="https://www.figma.com/api/mcp/asset/ca87c70f-9d8c-422c-a85c-ed94e3aa39e1" alt="Seng Silkhema" class="size-[100px] rounded-full object-cover">
+        <div class="flex gap-1 text-primary">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <p class="text-sm md:text-base">Super intuitive navigation. I didn't have to guess where anything was—everything just flows perfectly from one section to the next.</p>
+        <p class="font-display font-semibold text-lg">Seng Silkhema</p>
+        <p class="text-sm text-gray-500 dark:text-gray-300">01/07/2026</p>
+      </div>
+
+      <div class="testimonial-card flex flex-col items-center text-center gap-4 p-8 rounded-[28px] border border-[#595959]/30
+                  bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50
+                  dark:from-black/40 dark:via-[#484848]/25 dark:to-black/40">
+        <img src="https://www.figma.com/api/mcp/asset/cf70d1cd-3f81-4c9d-83f7-90899bf6cb38" alt="Cheang Sopheak" class="size-[100px] rounded-full object-cover">
+        <div class="flex gap-1 text-primary">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <p class="text-sm md:text-base">The dark mode and sleek bento-style layout are absolutely gorgeous. </p>
+        <p class="font-display font-semibold text-lg">Cheang Sopheak</p>
+        <p class="text-sm text-gray-500 dark:text-gray-300">01/07/2026</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<footer id="contact" class="px-6 md:px-[70px] pt-16 pb-8 bg-gray-50 dark:bg-black/30 mt-10">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+
+    <!-- Brand column -->
+    <div class="flex flex-col gap-5">
+      <span class="font-sora font-bold text-2xl">
+        <span class="text-primary">AUTO</span>STAD
+      </span>
+      <p class="text-lg">Drive Beyond Limits</p>
+      <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+        AutoSTAD is your ultimate destination for the world's most exclusive supercars.<br>
+        Luxury. Performance. Excellence.
+      </p>
+      <hr class="border-gray-300 dark:border-white/10 w-full">
+      <div class="flex flex-col gap-4">
+        <p class="font-bold text-sm tracking-wide">OUR SPONSORS</p>
+        <img src="https://www.figma.com/api/mcp/asset/8341a28e-beec-4073-afca-ca01f786e8ab" alt="iSTAD logo" class="h-14 w-auto object-contain">
+        <div class="flex gap-4">
+          <a href="#" aria-label="Facebook" class="bg-[#e9e9e9] text-gray-800 size-11 rounded-[7px] flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+            <i class="fa-brands fa-facebook-f text-lg"></i>
+          </a>
+          <a href="#" aria-label="YouTube" class="bg-[#e9e9e9] text-gray-800 size-11 rounded-[7px] flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+            <i class="fa-brands fa-youtube text-lg"></i>
+          </a>
+          <a href="#" aria-label="Instagram" class="bg-[#e9e9e9] text-gray-800 size-11 rounded-[7px] flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+            <i class="fa-brands fa-instagram text-lg"></i>
+          </a>
+          <a href="#" aria-label="Telegram" class="bg-[#e9e9e9] text-gray-800 size-11 rounded-[7px] flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+            <i class="fa-brands fa-telegram text-lg"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick links -->
+    <div class="flex flex-col gap-6">
+      <p class="text-base">QUICK LINKS</p>
+      <div class="flex flex-col gap-5 text-[15px]">
+        <a href="#" class="flex items-center gap-3 hover:text-primary transition-colors"><i class="fa-solid fa-house w-5"></i>Home</a>
+        <a href="#" class="flex items-center gap-3 hover:text-primary transition-colors"><i class="fa-solid fa-users w-5"></i>About</a>
+        <a href="#" class="flex items-center gap-3 hover:text-primary transition-colors"><i class="fa-solid fa-envelope w-5"></i>Contact</a>
+        <a href="#" class="flex items-center gap-3 hover:text-primary transition-colors"><i class="fa-solid fa-headset w-5"></i>Support</a>
+      </div>
+    </div>
+
+    <!-- Address & contact -->
+    <div class="flex flex-col gap-6">
+      <p class="text-base tracking-wide">ADDRESS &amp; CONTACT</p>
+      <div class="flex gap-4 items-start">
+        <i class="fa-solid fa-location-dot text-lg mt-1"></i>
+        <p class="text-[15px] leading-relaxed">#40, St 273, Sangkat Boeung Kak Khan<br>Toul Kork, Phnom Penh,<br>Cambodia</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <i class="fa-solid fa-phone text-lg"></i>
+        <p class="text-[15px]">(+855) 95-990-910</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <i class="fa-solid fa-phone text-lg"></i>
+        <p class="text-[15px]">(+855) 93-990-910</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <i class="fa-solid fa-envelope text-lg"></i>
+        <p class="text-[15px]">info.istad@gmail.com</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-5">
+      <p class="text-base tracking-wide">STAY IN THE LOOP</p>
+      <p class="text-[13px] text-gray-600 dark:text-gray-300">Subscribe to get the latest updates on new arrivals, offers and more.</p>
+      <form class="flex flex-col gap-3" onsubmit="return false;">
+        <label for="newsletter-email" class="sr-only">Enter your email</label>
+        <input id="newsletter-email" type="email" placeholder="Enter your email" required
+               class="w-full px-4 py-3 rounded-[10px] border border-gray-300 dark:border-white/15 bg-white dark:bg-white/5 text-sm placeholder:text-gray-400 focus:border-brand-red outline-none">
+        <button type="submit" class="bg-primary text-white font-medium text-base px-8 py-3.5 rounded-[10px] hover:bg-red-600 transition-colors">
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <hr class="border-gray-300 dark:border-white/10 max-w-7xl mx-auto mt-14 mb-6">
+
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-600 dark:text-gray-300">
+    <p>2026 AutoSTAD. All rights reserved.</p>
+    <div class="flex items-center gap-6">
+      <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+      <span class="opacity-40">|</span>
+      <a href="#" class="hover:text-primary transition-colors">Terms</a>
+      <span class="opacity-40">|</span>
+      <a href="#" class="hover:text-primary transition-colors">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- Theme toggle (dark default, persisted) ----
+  const root = document.documentElement;
+  const themeIcon = document.getElementById('theme-icon');
+  const themeToggle = document.getElementById('theme-toggle');
+
+  function applyTheme(isDark) {
+    root.classList.toggle('dark', isDark);
+    themeIcon.classList.toggle('fa-sun', isDark);
+    themeIcon.classList.toggle('fa-moon', !isDark);
+    localStorage.setItem('autostad-theme', isDark ? 'dark' : 'light');
+  }
+
+  const saved = localStorage.getItem('autostad-theme');
+  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  applyTheme(saved ? saved === 'dark' : !prefersLight);
+
+  themeToggle.addEventListener('click', () => {
+    applyTheme(!root.classList.contains('dark'));
+  });
+
+
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+
 
 </html>
