@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  if (localStorage.getItem('autostad-theme') === 'dark') document.documentElement.classList.add('dark');
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Create Account | AutoSTAD</title>
+<meta name="description" content="Join AutoSTAD and enter the world of the most exclusive supercars." />
+<link rel="stylesheet" href="src/output.css" />
+<style>
+  .hero-bg-light {
+    background-image: linear-gradient(90deg, rgba(0,0,0,.6), rgba(0,0,0,.3) 55%, rgba(0,0,0,.1)),
+      url('images/register-hero.png');
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-bg-dark {
+    background-image: linear-gradient(90deg, rgba(0,0,0,.7), rgba(0,0,0,.45) 55%, rgba(0,0,0,.2)),
+      url('images/members/register-hero-dark-hd.png');
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+</head>
+<body class="bg-white dark:bg-dark-bg min-h-screen flex items-center justify-center px-6 sm:px-10 lg:px-16 py-6 sm:py-8 transition-colors">
+
+<!-- Logo: pinned near the top of the viewport, independent of the centered hero -->
+<a href="index.html" aria-label="AutoSTAD home" class="fixed top-4 sm:top-6 left-4 sm:left-6 z-30 inline-flex items-center">
+  <img src="images/members/lightmode.png" alt="AutoSTAD" class="h-9 sm:h-10 w-auto dark:hidden" />
+  <img src="images/members/darkmode.png" alt="AutoSTAD" class="h-9 sm:h-10 w-auto hidden dark:block" />
+</a>
+
+<!-- Back + theme toggle: pinned near the top of the viewport -->
+<div class="fixed top-4 sm:top-6 right-4 sm:right-6 z-30 flex items-center gap-2">
+  <button id="theme-toggle" aria-label="Toggle dark mode"
+    class="w-9 h-9 flex items-center justify-center rounded-xl border border-border dark:border-gray-700 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+    <svg id="theme-icon-moon" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+    <svg id="theme-icon-sun" class="w-3.5 h-3.5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+  </button>
+  <a href="index.html" aria-label="Go back"
+     class="w-[46px] h-9 flex items-center justify-center rounded-xl bg-button hover:bg-button-hover text-white transition-colors">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+  </a>
+</div>
+
+<div class="relative w-full max-w-[1450px] mx-auto">
+
+  <!-- Hero: photo panel + card, side by side in their own sections -->
+  <div class="flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-8">
+
+    <!-- Photo panel: square corners, swaps image between light/dark mode -->
+    <div class="relative w-full lg:w-[860px] lg:shrink-0 max-w-full aspect-[1000/626] overflow-hidden shadow-xl">
+      <div class="absolute inset-0 hero-bg-light dark:hidden"></div>
+      <div class="absolute inset-0 hero-bg-dark hidden dark:block"></div>
+
+      <div class="relative z-10 h-full flex flex-col justify-between p-6 sm:p-8">
+        <div>
+          <h1 class="text-3xl sm:text-4xl font-medium text-white leading-tight">Join AutoSTAD</h1>
+          <p class="mt-2 text-sm text-gray-200 max-w-sm">Create your account and enter the world of the most exclusive supercars.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-gray-200 max-w-lg">
+          <div class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z"/></svg>
+            <div><p class="font-medium text-white">Trusted Platform</p><p class="text-gray-300">Secure &amp; verified</p></div>
+          </div>
+          <div class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-primary shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 6.9L12 17.3 5.7 20.9l1.7-6.9L2 9.2l7.1-.6z"/></svg>
+            <div><p class="font-medium text-white">Exclusive Inventory</p><p class="text-gray-300">Handpicked supercars</p></div>
+          </div>
+          <div class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 18v-6a9 9 0 0118 0v6M3 18a2 2 0 002 2h1a2 2 0 002-2v-2a2 2 0 00-2-2H3v4zm18 0a2 2 0 01-2 2h-1a2 2 0 01-2-2v-2a2 2 0 012-2h3v4z"/></svg>
+            <div><p class="font-medium text-white">Concierge Support</p><p class="text-gray-300">Here for you 24/7</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card: its own section beside the photo, no overlap -->
+    <div class="relative z-10 w-full lg:w-[390px] lg:shrink-0">
+
+      <!-- Red ambient hue -->
+      <div class="absolute -right-10 top-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-primary/25 blur-3xl pointer-events-none -z-10"></div>
+
+      <div class="bg-primary-bg dark:bg-black/40 backdrop-blur-2xl backdrop-saturate-150 border border-white/50 dark:border-white/10 rounded-[28px] shadow-[0_30px_80px_rgba(0,0,0,0.12)] px-9 py-7">
+        <div class="flex flex-col items-center text-center mb-4">
+          <div class="w-12 h-11 rounded-full bg-icon-bg dark:bg-primary/20 flex items-center justify-center mb-2">
+            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          </div>
+          <h2 class="text-lg font-medium text-gray-900 dark:text-white">Create Account</h2>
+          <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Fill in your details to get started</p>
+        </div>
+
+        <form id="register-form" class="space-y-2.5" novalidate>
+          <div class="relative">
+            <svg class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-900 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            <label for="fullname" class="sr-only">Full Name</label>
+            <input id="fullname" type="text" required placeholder="Full Name"
+              class="w-full h-11 pl-10 pr-4 text-xs rounded-xl border border-white/60 dark:border-white/10 bg-white/60 dark:bg-white/10 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+
+          <div class="relative">
+            <svg class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-900 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.9 5.3a2 2 0 002.2 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <label for="reg-email" class="sr-only">Email Address</label>
+            <input id="reg-email" type="email" required placeholder="Email Address"
+              class="w-full h-11 pl-10 pr-4 text-xs rounded-xl border border-white/60 dark:border-white/10 bg-white/60 dark:bg-white/10 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+
+          <div class="relative">
+            <svg class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-900 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h2.3a1 1 0 01.97.76l1 4a1 1 0 01-.27.95L7.4 10.3a12 12 0 006.3 6.3l1.6-1.6a1 1 0 01.95-.27l4 1a1 1 0 01.76.97V19a2 2 0 01-2 2h-1C9.8 21 3 14.2 3 6V5z"/></svg>
+            <label for="phone" class="sr-only">Phone Number</label>
+            <input id="phone" type="tel" required placeholder="Phone Number"
+              class="w-full h-11 pl-10 pr-4 text-xs rounded-xl border border-white/60 dark:border-white/10 bg-white/60 dark:bg-white/10 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+
+          <div class="relative">
+            <svg class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-900 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            <label for="reg-password" class="sr-only">Password</label>
+            <input id="reg-password" type="password" required placeholder="Password"
+              class="w-full h-11 pl-10 pr-10 text-xs rounded-xl border border-white/60 dark:border-white/10 bg-white/60 dark:bg-white/10 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary" />
+            <button type="button" data-toggle-password="reg-password" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-900 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white" aria-label="Show password">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.5 12S6 5 12 5s9.5 7 9.5 7-3.5 7-9.5 7-9.5-7-9.5-7z"/><circle cx="12" cy="12" r="3" stroke-width="2"/></svg>
+            </button>
+          </div>
+
+          <div class="relative">
+            <svg class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-900 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            <label for="confirm-password" class="sr-only">Confirm Password</label>
+            <input id="confirm-password" type="password" required placeholder="Confirm Password"
+              class="w-full h-11 pl-10 pr-10 text-xs rounded-xl border border-white/60 dark:border-white/10 bg-white/60 dark:bg-white/10 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary" />
+            <button type="button" data-toggle-password="confirm-password" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-900 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white" aria-label="Show password">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.5 12S6 5 12 5s9.5 7 9.5 7-3.5 7-9.5 7-9.5-7-9.5-7z"/><circle cx="12" cy="12" r="3" stroke-width="2"/></svg>
+            </button>
+          </div>
+
+          <div class="relative">
+            <svg class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-900 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.6 9h16.8M3.6 15h16.8M11.5 3a17 17 0 000 18M12.5 3a17 17 0 010 18M12 21a9 9 0 100-18 9 9 0 000 18z"/></svg>
+            <label for="country" class="sr-only">Country</label>
+            <select id="country" required
+              class="w-full h-11 pl-10 pr-8 text-xs rounded-xl border border-white/60 dark:border-white/10 bg-white/60 dark:bg-white/10 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary appearance-none">
+              <option value="" disabled selected>Country</option>
+              <option>Cambodia</option>
+              <option>Thailand</option>
+              <option>Vietnam</option>
+              <option>Singapore</option>
+              <option>Other</option>
+            </select>
+            <svg class="w-3.5 h-3.5 absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-900 dark:text-gray-300 pointer-events-none" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          </div>
+
+          <button type="submit" class="w-full h-11 rounded-xl bg-button hover:bg-button-hover text-white font-medium text-xs transition-colors">
+            Create Account
+          </button>
+
+          <p class="text-center text-xs text-gray-600 dark:text-gray-400 pt-1 font-normal">
+            Already have an account? <a href="login.html" class="font-medium text-primary hover:text-button-hover">Login</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="theme.js" defer></script>
+<script src="signup.js" defer></script>
+</body>
+</html>
