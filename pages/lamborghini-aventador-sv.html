@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lamborghini Aventador SV | AutoSTAD</title>
+  <meta name="description" content="Lamborghini Aventador SV for sale at AutoSTAD. $140,000.00." />
+  <!-- No-flash theme: set dark class before first paint -->
+  <script>
+    if (localStorage.getItem('autostad-theme') === 'dark') document.documentElement.classList.add('dark');
+  </script>
+  <!-- Favicon removed — awaiting new AutoSTAD logo image -->
+  <link rel="stylesheet" href="../src/output.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-bg-page dark:bg-dark-bg text-gray-900 dark:text-white font-inter antialiased transition-colors duration-300 min-h-screen flex flex-col">
+
+<!-- ================= HEADER / NAVBAR ================= -->
+<header class="sticky top-[10px] z-50">
+  <nav class="mx-auto mt-2.5 w-[95%] rounded-2xl bg-gray-100/95 dark:bg-dark-bg/80 px-6 py-3 flex items-center justify-between shadow-sm border-b border-gray-200/60 dark:border-gray-800 backdrop-blur">
+    <!-- Logo (light / dark variants) -->
+    <a href="../index.html" class="flex flex-col items-start shrink-0" aria-label="AutoSTAD home">
+      <img src="../images/members/lightmode.png" alt="AutoSTAD" class="h-10 w-auto dark:hidden" />
+      <img src="../images/members/darkmode.png" alt="AutoSTAD" class="h-10 w-auto hidden dark:block" />
+      <p class="hidden sm:block text-[9px] tracking-[0.2em] text-gray-500 dark:text-gray-400 font-medium">DRIVE YOUR LEGEND</p>
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600 dark:text-gray-300">
+      <li><a data-nav="home" href="../index.html" class="hover:text-primary transition-colors">Home</a></li>
+      <li class="relative"><a data-nav="cars" href="cars.html" class="hover:text-primary transition-colors">Cars</a></li>
+      <li><a data-nav="about" href="about.html" class="hover:text-primary transition-colors">About</a></li>
+      <li><a data-nav="contact" href="contact.html" class="hover:text-primary transition-colors">Contact</a></li>
+    </ul>
+
+    <!-- Right controls -->
+    <div class="flex items-center gap-3">
+      <button type="button" class="hidden sm:flex w-9 h-9 items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 transition-colors" aria-label="Search">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"/></svg>
+      </button>
+      <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 transition-colors" aria-label="Toggle dark mode">
+        <svg id="theme-icon-moon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg id="theme-icon-sun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+
+      <button type="button" class="hidden sm:flex w-9 h-9 items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 transition-colors" aria-label="Account">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+      </button>
+
+      <a href="login.html" class="hidden sm:flex items-center gap-1.5 bg-button hover:bg-button-hover text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
+        Sign In
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+
+      <button id="mobile-menu-btn" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200" aria-label="Open menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile dropdown menu -->
+  <div id="mobile-menu" class="hidden md:hidden mx-auto w-[95%] mt-2 bg-gray-100 dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-200/60 dark:border-gray-800 p-4">
+    <ul class="flex flex-col gap-1 text-sm font-medium text-gray-700 dark:text-gray-200">
+      <li><a data-nav="home" href="../index.html" class="block px-3 py-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800">Home</a></li>
+      <li><a data-nav="cars" href="cars.html" class="block px-3 py-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800">Cars</a></li>
+      <li><a data-nav="about" href="about.html" class="block px-3 py-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800">About</a></li>
+      <li><a data-nav="contact" href="contact.html" class="block px-3 py-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="flex-1">
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-12 items-start">
+      <!-- Gallery -->
+      <div class="lg:col-span-3 flex flex-col gap-4">
+        <div class="overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-900 aspect-[3/2]">
+          <img id="gallery-main" src="../images/photo_2026-07-08_21-00-37.jpg" alt="Lamborghini Aventador SV" class="w-full h-full object-cover" />
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+            <button type="button" data-thumb class="overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900 aspect-[4/3] focus:outline-none">
+              <img src="../images/photo_2026-07-08_21-00-48.jpg" alt="Lamborghini Aventador SV detail" class="w-full h-full object-cover" loading="lazy" />
+            </button>
+            <button type="button" data-thumb class="overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900 aspect-[4/3] focus:outline-none">
+              <img src="../images/photo_2026-07-08_21-00-57.jpg" alt="Lamborghini Aventador SV detail" class="w-full h-full object-cover" loading="lazy" />
+            </button>
+            <button type="button" data-thumb class="overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900 aspect-[4/3] focus:outline-none">
+              <img src="../images/photo_2026-07-08_21-01-04.jpg" alt="Lamborghini Aventador SV detail" class="w-full h-full object-cover" loading="lazy" />
+            </button>
+        </div>
+      </div>
+
+      <!-- Details -->
+      <div class="lg:col-span-2 flex flex-col">
+        <h1 class="font-display text-2xl md:text-3xl font-bold leading-snug mb-4">Lamborghini Aventador SV Roadster LP 750-4 HOT Black on Black Spec Full PPF Front Lifter Rosso Accents</h1>
+        <p class="text-sm text-gray-500 dark:text-gray-400 border-y border-border dark:border-gray-800 py-3.5 mb-6">Plug-in hybrid &nbsp;&bull;&nbsp; 463 hp / 341 kW &nbsp;&bull;&nbsp; All-wheel-drive</p>
+        <div class="font-display text-3xl md:text-4xl font-extrabold text-primary mb-8">$140,000.00</div>
+        <ul class="space-y-3 text-base text-gray-600 dark:text-gray-300 mb-12">
+            <li>740hp 6.5l v12 engine</li>
+            <li>Last-of-its-kind naturally aspirated v12</li>
+            <li>High-performance & desired sv model</li>
+            <li>Full body paint protection film</li>
+            <li>Front axle lift system</li>
+        </ul>
+        <div class="flex items-center justify-between gap-4 mt-auto">
+          <a href="tel:+85595990910" class="btn-primary justify-center px-12 py-3.5">call now</a>
+          <a href="cars.html" aria-label="Back to all cars" class="bg-button hover:bg-button-hover text-white p-3.5 rounded-xl transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-white dark:bg-dark-bg border-t border-gray-200 dark:border-gray-800 transition-colors mt-10">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 pt-14 pb-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10 pb-10">
+      <!-- Brand -->
+      <div>
+        <a href="../index.html" class="inline-flex items-center" aria-label="AutoSTAD home">
+          <img src="../images/members/lightmode.png" alt="AutoSTAD" class="h-10 w-auto object-contain dark:hidden" />
+          <img src="../images/members/darkmode.png" alt="AutoSTAD" class="h-10 w-auto object-contain hidden dark:block" />
+        </a>
+        <h3 class="mt-4 font-bold text-gray-900 dark:text-white">Drive Beyond Limits</h3>
+        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed max-w-xs">
+          AutoSTAD is your ultimate destination for the world's most exclusive supercars. Luxury, performance, excellence.
+        </p>
+        <div class="mt-6 pt-5 border-t border-gray-200 dark:border-gray-800">
+          <p class="text-xs font-semibold tracking-wider text-gray-400 dark:text-gray-500 mb-3">POWERED BY</p>
+          <img src="../images/logo/ Logo-iSTAD.png" alt="iSTAD" class="h-10 w-auto object-contain" />
+        </div>
+        <div class="mt-5 flex items-center gap-3">
+          <a href="#" aria-label="Facebook" class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="YouTube" class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition-colors"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="Instagram" class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Telegram" class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition-colors"><i class="fa-brands fa-telegram"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick links -->
+      <div class="md:pl-12">
+        <p class="text-xs font-semibold tracking-wider text-gray-400 dark:text-gray-500 mb-4">QUICK LINKS</p>
+        <ul class="space-y-4 text-sm text-gray-600 dark:text-gray-300">
+          <li><a href="../index.html" class="flex items-center gap-2.5 hover:text-primary transition-colors"><i class="fa-solid fa-house w-4"></i>Home</a></li>
+          <li><a href="cars.html" class="flex items-center gap-2.5 hover:text-primary transition-colors"><i class="fa-solid fa-car w-4"></i>Cars</a></li>
+          <li><a href="about.html" class="flex items-center gap-2.5 hover:text-primary transition-colors"><i class="fa-solid fa-users w-4"></i>About</a></li>
+          <li><a href="contact.html" class="flex items-center gap-2.5 hover:text-primary transition-colors"><i class="fa-solid fa-envelope w-4"></i>Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Address + newsletter -->
+      <div class="md:pl-12">
+        <p class="text-xs font-semibold tracking-wider text-gray-400 dark:text-gray-500 mb-4">ADDRESS &amp; CONTACT</p>
+        <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-3">
+          <li class="flex items-start gap-2.5"><i class="fa-solid fa-location-dot text-primary mt-1"></i><span>#40, St 273, Sangkat Boeung Kak, Toul Kork, Phnom Penh, Cambodia</span></li>
+          <li class="flex items-center gap-2.5"><i class="fa-solid fa-phone text-primary"></i>(+855) 95-990-910</li>
+          <li class="flex items-center gap-2.5"><i class="fa-solid fa-envelope text-primary"></i>info.istad@gmail.com</li>
+        </ul>
+        <p class="mt-6 text-xs font-semibold tracking-wider text-gray-400 dark:text-gray-500">STAY IN THE LOOP</p>
+        <form id="newsletter-form" class="mt-3 flex gap-2">
+          <label for="footer-email" class="sr-only">Email address</label>
+          <input id="footer-email" type="email" required placeholder="Enter your email" class="flex-1 min-w-0 px-4 py-2.5 text-sm rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary" />
+          <button type="submit" class="px-5 py-2.5 text-sm font-semibold rounded-lg bg-button hover:bg-button-hover text-white transition-colors shrink-0">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500 dark:text-gray-400">
+      <p>&copy; 2026 AutoSTAD. All rights reserved.</p>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+        <span class="text-primary">|</span>
+        <a href="#" class="hover:text-primary transition-colors">Terms</a>
+        <span class="text-primary">|</span>
+        <a href="#" class="hover:text-primary transition-colors">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../Js/theme.js" defer></script>
+<script src="../Js/navbar.js" defer></script>
+<script src="../Js/footer.js" defer></script>
+<script src="../Js/car-detail.js" defer></script>
+</body>
+</html>
