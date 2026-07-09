@@ -392,6 +392,9 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .my-1 {
+    margin-block: var(--spacing);
+  }
   .my-2 {
     margin-block: calc(var(--spacing) * 2);
   }
@@ -593,6 +596,9 @@
   .h-\[150px\] {
     height: 150px;
   }
+  .h-\[175px\] {
+    height: 175px;
+  }
   .h-\[calc\(100vh-120px\)\] {
     height: calc(100vh - 120px);
   }
@@ -617,8 +623,14 @@
   .min-h-\[160px\] {
     min-height: 160px;
   }
+  .min-h-\[240px\] {
+    min-height: 240px;
+  }
   .min-h-\[260px\] {
     min-height: 260px;
+  }
+  .min-h-\[280px\] {
+    min-height: 280px;
   }
   .min-h-\[300px\] {
     min-height: 300px;
