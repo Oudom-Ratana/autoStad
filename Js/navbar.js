@@ -11,16 +11,16 @@
     });
   }
 
-  // ----- Active link highlighting -----
-  // Each nav link carries data-nav="home|cars|about|contact".
-  // The active key is derived from the file name so identical nav markup
-  // works on every page with no hand-editing of the active state.
-  const file = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  let path = location.pathname;
+  if (path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);
+  let file = (path.split('/').pop() || '').toLowerCase();
+  file = file.replace(/\.html$/, '');
+
   let current = 'home';
-  if (file === '' || file === 'index.html') current = 'home';
-  else if (file === 'cars.html') current = 'cars';
-  else if (file === 'about.html') current = 'about';
-  else if (file === 'contact.html') current = 'contact';
+  if (file === '' || file === 'index') current = 'home';
+  else if (file === 'cars') current = 'cars';
+  else if (file === 'about') current = 'about';
+  else if (file === 'contact') current = 'contact';
   else current = 'cars'; // car detail pages belong to the Cars section
 
   document.querySelectorAll('[data-nav]').forEach((link) => {
