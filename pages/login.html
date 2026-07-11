@@ -8,6 +8,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sign In | AutoSTAD</title>
 <meta name="description" content="Sign in to your AutoSTAD account to browse and manage your exclusive supercar collection." />
+  <link rel="canonical" href="https://www.autostad.com/pages/login.html" />
+  <meta name="robots" content="index, follow" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="AutoSTAD" />
+  <meta property="og:title" content="Sign In | AutoSTAD" />
+  <meta property="og:description" content="Sign in to your AutoSTAD account to browse and manage your exclusive supercar collection." />
+  <meta property="og:url" content="https://www.autostad.com/pages/login.html" />
+  <meta property="og:image" content="https://www.autostad.com/images/og/og-login.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Sign In | AutoSTAD" />
+  <meta property="og:locale" content="en_US" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sign In | AutoSTAD" />
+  <meta name="twitter:description" content="Sign in to your AutoSTAD account to browse and manage your exclusive supercar collection." />
+  <meta name="twitter:image" content="https://www.autostad.com/images/og/og-login.jpg" />
 <link rel="stylesheet" href="../src/output.css" />
 <style>
   .hero-bg-light {
@@ -22,18 +40,14 @@
   }
 </style>
 </head>
-<body class="bg-white dark:bg-dark-bg min-h-screen flex items-center justify-center px-6 sm:px-10 lg:px-16 py-6 sm:py-8 transition-colors">
+<body class="bg-white dark:bg-dark-bg min-h-screen overflow-x-hidden flex items-center justify-center px-4 sm:px-10 lg:px-16 pt-20 pb-6 sm:pt-8 sm:py-8 transition-colors">
 
-<!-- Logo: pinned near the top of the viewport, independent of the centered hero -->
-<a href="../index.html" aria-label="AutoSTAD home" class="fixed top-4 sm:top-6 left-4 sm:left-6 z-30 inline-flex items-center">
-  <img src="../images/members/lightmode.png" alt="AutoSTAD" class="h-9 sm:h-10 w-auto dark:hidden" />
-  <img src="../images/members/darkmode.png" alt="AutoSTAD" class="h-9 sm:h-10 w-auto hidden dark:block" />
-</a>
+
 
 <!-- Back + theme toggle: pinned near the top of the viewport -->
 <div class="fixed top-4 sm:top-6 right-4 sm:right-6 z-30 flex items-center gap-2">
   <button id="theme-toggle" aria-label="Toggle dark mode"
-    class="w-9 h-9 flex items-center justify-center rounded-xl border border-border dark:border-gray-700 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+    class="w-9 h-9 flex items-center justify-center rounded-xl border border-border dark:border-gray-700 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors bg-white/70 dark:bg-black/40 backdrop-blur">
     <svg id="theme-icon-moon" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
     <svg id="theme-icon-sun" class="w-3.5 h-3.5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
   </button>
@@ -59,24 +73,24 @@
         <p class="mt-2 text-sm text-gray-500 dark:text-gray-300 max-w-sm">Experience the world's most exclusive supercars.</p>
       </div>
     </div> -->
-      <div class="relative w-full lg:w-[860px] lg:shrink-0 max-w-full aspect-video overflow-hidden shadow-xl">
-      <img src="../images/sign-in-light-hd.png" alt="" class="absolute inset-0 w-full h-full object-cover dark:hidden" />
+      <div class="relative w-full lg:w-[860px] lg:shrink-0 max-w-full aspect-[4/3] sm:aspect-video max-h-[280px] sm:max-h-none overflow-hidden rounded-2xl lg:rounded-none shadow-xl">
+      <img src="../images/sign-in-light-hd.png" alt="" class="absolute inset-0 w-full h-full object-cover dark:hidden " />
       <img src="../images/sign-in-dark-hd.png" alt="" class="absolute inset-0 w-full h-full object-cover hidden dark:block" />
       <div class="absolute inset-0 bg-black/20"></div>
 
-      <div class="relative z-10 h-full flex flex-col justify-start px-6 sm:px-8 pt-8 sm:pt-10 pb-6 sm:pb-8">
+      <div class="relative z-10 h-full flex flex-col justify-start px-5 sm:px-8 pt-6 sm:pt-10 pb-6 sm:pb-8">
         <p class="text-xs font-medium tracking-[0.25em] text-gray-600 dark:text-gray-300 mb-2">WELCOME BACK</p>
-        <h1 class="text-3xl sm:text-4xl font-medium text-gray-900 dark:text-white leading-tight">Welcome Back.</h1>
-        <p class="mt-2 text-sm text-gray-500 dark:text-gray-300 max-w-sm">Experience the world's most exclusive supercars.</p>
+        <h1 class="text-2xl sm:text-4xl font-medium text-gray-900 dark:text-white leading-tight">Welcome Back.</h1>
+        <p class="mt-2 text-sm text-white dark:text-gray-300 max-w-sm lg:text-gray-700">Experience the world's most exclusive supercars.</p>
       </div>
     </div>
     <!-- Card: its own section beside the photo, no overlap -->
-    <div class="relative z-10 w-full lg:w-[390px] lg:shrink-0">
+    <div class="relative z-10 w-full lg:w-[390px] lg:shrink-0 overflow-hidden lg:overflow-visible rounded-[28px]">
 
       <!-- Red ambient hue -->
-      <div class="absolute -right-10 top-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-primary/25 blur-3xl pointer-events-none -z-10"></div>
+      <div class="absolute right-0 top-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-primary/25 blur-3xl pointer-events-none -z-10"></div>
 
-      <div class="bg-primary-bg dark:bg-black/40 backdrop-blur-2xl backdrop-saturate-150 border border-white/50 dark:border-white/10 rounded-[28px] shadow-[0_30px_80px_rgba(0,0,0,0.12)] px-9 py-7">
+      <div class="bg-primary-bg dark:bg-black/40 backdrop-blur-2xl backdrop-saturate-150 border border-white/50 dark:border-white/10 rounded-[28px] shadow-[0_30px_80px_rgba(0,0,0,0.12)] px-6 sm:px-9 py-6 sm:py-7">
         <h2 class="text-xl font-medium text-primary">Sign In</h2>
         <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Welcome back to AutoSTAD</p>
 
@@ -102,7 +116,7 @@
             </div>
           </div>
 
-          <div class="flex items-center justify-between gap-2 text-[18px] sm:text-xs">
+          <div class="flex flex-wrap items-center justify-between gap-x-2 gap-y-1.5 text-xs">
             <label class="flex items-center gap-1.5 whitespace-nowrap text-gray-500 dark:text-gray-400 font-normal">
               <input type="checkbox" class="shrink-0 rounded border-border dark:border-gray-600 text-primary focus:ring-primary" />
               Remember Me
